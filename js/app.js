@@ -5,7 +5,7 @@ app.controller('MainCtrl', function ($scope, $timeout, QueueService) {
         slides = [
             {id: "image00", src: "./images/image00.jpg", title: 'Our love', subtitle: 'will prove everyone wrong!'},
             {id: "image01", src: "./images/image01.jpg", title: 'Can you feel', subtitle: 'the love tonight!'},
-            {id: "image02", src: "./images/image02.jpg", title: 'You', subtitle: 'complete me!'},
+            {id: "image02", src: "./images/image02.jpg", title: 'You are the wind', subtitle: 'beneath my wings'},
             {id: "image03", src: "./images/image03.jpg", title: 'Anything for you', subtitle: 'even accepting your family'},
             {id: "image04", src: "./images/image04.jpg", title: 'True love', subtitle: 'a dream within a dream'}
         ];
@@ -86,20 +86,20 @@ app.factory('QueueService', function ($rootScope) {
 app.animation('.slide-animation', function ($window) {
     return {
         enter: function (element, done) {
-            var startPoint = $window.innerWidth,
+            var startPoint = $window.innerWidth * 0.5,
                 tl = new TimelineLite();
             
-            tl.fromTo(element.find('.bg'), 1, { left: startPoint}, {left: 0})
+            tl.fromTo(element.find('.bg'), 1, { alpha: 0}, {alpha: 1})
+                .fromTo(element.find('.xlarge'), 1, { left: startPoint, alpha: 0}, {left: 50, alpha: 1, ease: Ease.easeInOut})
                 .fromTo(element.find('.title'), 3, { left: startPoint, alpha: 0}, {left: 50, alpha: 1, ease: Ease.easeInOut})
                 .fromTo(element.find('.subtitle'), 3, { left: startPoint, alpha: 0}, {left: 50, alpha: 1, ease: Ease.easeInOut, onComplete: done});
 
         },
 
         leave: function (element, done) {
-            var endPoint = -$window.innerWidth,
-                tl = new TimelineLite();
+            var tl = new TimelineLite();
 
-            tl.to(element, 1, {left: endPoint, onComplete: done});
+            tl.to(element, 1, {alpha: 0, onComplete: done});
         }
     };
 });

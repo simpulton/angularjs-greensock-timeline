@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>AngularJS Slideshow</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -15,6 +16,8 @@
 
     <div class="slide slide-animation" ng-if="isCurrentSlideIndex($index)" ng-show="loaded" ng-repeat="slide in slides">
         <img class="bg" bg-image ng-src="{{slide.src}}">
+
+        <div class="xlarge">{{slide.title}}</div>
 
         <div class="title">{{slide.title}}</div>
 
