@@ -1,4 +1,4 @@
-angularjs-greensock-slideshow
+Slideshow Using AngularJS and Greensock Timeline
 =============================
 
-Full page slideshow built in AngularJS and Greensock.
+An AngularJS slideshow using the Greensock timeline.
